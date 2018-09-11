@@ -1,0 +1,1041 @@
+html {
+  height: 101%;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  color: #6f6e5f;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Titillium Web", Arial, sans-serif;
+  color: #333;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 27pt;
+}
+
+h2 {
+  font-size: 23pt;
+}
+
+h3 {
+  font-size: 18pt;
+}
+
+p a {
+  text-decoration: underline;
+  color: #005485;
+}
+
+p a:hover {
+  color: #00A2FF;
+}
+
+/*nav styles */
+
+@media screen and (min-width:992px) {
+  .bg-blue-sita {
+    background-image: url(../images/logo-banner-right.png);
+    max-height: 55px;
+  }
+  .bg-blue-sita-lg {
+    background-image: url(../images/logo-banner-right-lg.png);
+    max-height: 55px;
+  }
+  .navbar {
+    border-bottom: 1px #ccc solid;
+  }
+  .navbar-user, .navbar-top-links {
+    color: #0d0d0d;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .dropdown-menu {
+    border: none;
+    font-size: 9pt;
+    text-transform: uppercase;
+    background-color: transparent;
+  }
+  .dropdown-menu a.dropdown-item {
+    color: rgba(255, 255, 255, .5);
+  }
+  .dropdown-menu a.dropdown-item:hover {
+    color: rgba(255, 255, 255, .75);
+    background-color: transparent;
+  }
+  .dropdown-menu .dropdown-divider {
+    display: none;
+  }
+}
+
+.bg-blue-sita {
+  background-color: #005485;
+  color: #FFF;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.navbar-brand img {
+  max-height: 33px;
+}
+
+.useroptions .icon {
+  max-height: 20px;
+  max-width: 20px;
+}
+
+.bg-blue-sita .navbar-toggler, .bg-blue-sita-lg .navbar-toggler {
+  border-style: none;
+}
+
+.bg-blue-sita .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+nav ul {
+  font-size: .9rem;
+}
+
+.sita-navbar .navbar a:hover {
+  text-decoration: none;
+}
+
+.navbar-user {
+  font-size: .75rem;
+  border-right: 1px #1d1d1d solid;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar-top-links a.dropdown-toggle {
+  padding-right: 5px;
+}
+
+.navbar-top-links {
+  margin-right: 0;
+}
+
+.navbar-top-links li {
+  display: inline-block;
+}
+
+.navbar-top-links li:last-child {
+  margin-right: 15px;
+}
+
+.navbar-top-links li a {
+  padding: 15px;
+  min-height: 50px;
+  color: #0d0d0d;
+}
+
+.navbar-top-links .dropdown-menu li {
+  display: block;
+}
+
+.navbar-top-links .dropdown-menu li:last-child {
+  margin-right: 0;
+}
+
+.navbar-top-links .dropdown-menu li a {
+  padding: 3px 20px;
+  min-height: 0;
+}
+
+.navbar-top-links .dropdown-menu li a div {
+  white-space: normal;
+}
+
+.navbar-top-links .dropdown-messages, .navbar-top-links .dropdown-tasks, .navbar-top-links .dropdown-alerts {
+  width: 310px;
+  min-width: 0;
+}
+
+.navbar-top-links .dropdown-messages {
+  margin-left: 5px;
+}
+
+.navbar-top-links .dropdown-tasks {
+  margin-left: -59px;
+}
+
+.navbar-top-links .dropdown-alerts {
+  margin-left: -123px;
+}
+
+.navbar-top-links .dropdown-user {
+  right: 0;
+  left: auto;
+}
+
+.navbar-top-links .dropdown-messages, .navbar-top-links .dropdown-tasks, .navbar-top-links .dropdown-alerts {
+  margin-left: auto;
+}
+
+/*NavBar Buttons Styles*/
+
+.navbar-top .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #fff;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-top .search-container button:hover {
+  background: #ccc;
+}
+
+/*END NavBar Buttons Styles*/
+
+@media screen and (max-width: 600px) {
+  .navbar-top .search-container {
+    float: none;
+  }
+  .navbar-top a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .navbar-top input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+
+.sidebar .sidebar-nav.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar .sidebar-search {
+  padding: 15px;
+}
+
+.sidebar ul li {
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.sidebar ul li a.active {
+  background-color: #eeeeee;
+}
+
+.sidebar .arrow {
+  float: right;
+}
+
+.sidebar .fa.arrow:before {
+  content: "\f104";
+}
+
+.sidebar .active>a>.fa.arrow:before {
+  content: "\f107";
+}
+
+.sidebar .nav-second-level li, .sidebar .nav-third-level li {
+  border-bottom: none !important;
+}
+
+.sidebar .nav-second-level li a {
+  padding-left: 37px;
+}
+
+.sidebar .nav-third-level li a {
+  padding-left: 52px;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    margin-top: 51px;
+  }
+  .navbar-top-links .dropdown-messages, .navbar-top-links .dropdown-tasks, .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+}
+
+/*list styles
+ul.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.bullets li {
+  padding-left: 1em; 
+  text-indent: -.7em;
+}
+
+ul.bullets li::before {
+  content: "• ";
+  font-size: 25px;
+  color: #00A2FF;
+  line-height: 1rem;
+}
+
+*/
+
+/*Start Tooltip Styles*/
+
+.tooltip .tooltip-inner {
+  background-color: #cccccc;
+  color: #000000;
+}
+
+.tooltip .arrow:before {
+  border-top-color: #cccccc;
+}
+
+/*End Tooltip Styles*/
+
+/*Start Popover Styles*/
+
+.popover {
+  background-color: #cccccc;
+  color: #000000;
+}
+
+.popover .arrow:after {
+  border-top-color: #cccccc;
+}
+
+/*End Popover Styles*/
+
+/*Start Image Grid Styles*/
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  width: 50%;
+}
+
+/* Create four equal columns that sits next to each other */
+
+.column {
+  flex: 50%;
+  max-width: 50%;
+  padding: 0 4px;
+}
+
+.column img {
+  width: 100%;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/*End Image Grid Styles*/
+
+/*Start Alerts Styles*/
+
+.alert a {
+  font-weight: bold;
+  color: #333;
+}
+
+.alert-info {
+  background-color: #99daff;
+  color: #333;
+}
+
+.alert-success {
+  background-color: #c9e9d1;
+  color: #333;
+}
+
+.alert-danger {
+  background-color: #e8a5a7;
+  color: #333;
+}
+
+.alert-warning {
+  background-color: #fac6a6;
+  color: #333;
+}
+
+/*End Alerts Styles*/
+
+/*table styles*/
+
+.table thead th {
+  color: #fff;
+  background-color: #00a2ff;
+}
+
+.table-fixed {
+  width: 100%;
+  background-color: #f3f3f3;
+}
+
+.table-fixed tbody {
+  height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+
+.table-fixed tbody td {
+  float: left;
+}
+
+.table-fixed thead tr th {
+  float: left;
+  background-color: #f39c12;
+  border-color: #e67e22;
+}
+
+/*END table styles*/
+
+/*form styles*/
+
+.sita-form-group {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: 'Open Sans SemiBold', 'Open Sans Regular', 'Open Sans';
+  font-weight: 600;
+  font-style: normal;
+  font-size: 20px;
+  color: #333333;
+  text-align: left;
+}
+
+.form-control {
+  font-size: .9rem;
+}
+
+form label {
+  font-weight: bold;
+  font-size: .8rem;
+  color: #000;
+  margin-bottom: .1rem;
+}
+
+select option:hover {
+  background-color: #99daff;
+  color: #fff;
+}
+
+input::placeholder, textarea::placeholder {
+  font-style: italic;
+  color: #CCC;
+  font-size: .9rem;
+}
+
+/*toggle styles*/
+
+/* The switch - the box around the slider */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+
+.switch input {
+  display: none;
+}
+
+/* The slider */
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #FFFFFF;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #005485;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #005485;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*form validation styles*/
+
+div.invalid-feedback {
+  font-style: italic;
+}
+
+div.invalid-feedback:before {
+  font-family: FontAwesome;
+  content: "\f077";
+  font-style: normal;
+}
+
+div.valid-feedback:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+
+/*END form styles*/
+
+/*Datepicker Styles*/
+
+.sita-datepicker {
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+}
+
+/*Accordion styles*/
+
+.card {
+  margin: 5px 0px 0px 0px;
+}
+
+.collapse {
+  margin: 5px 0px 5px 0px;
+}
+
+.card-header {
+  color: #27251F;
+}
+
+.accordion .card-header:after {
+  font-family: FontAwesome;
+  content: '\f078';
+  float: right;
+  color: #005485;
+}
+
+.accordion .card-header.collapsed:after {
+  font-family: FontAwesome;
+  content: '\f054';
+  float: right;
+  color: #005485;
+}
+
+.accordion .card .card-header {
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.accordion .card .card-header:hover {
+  background-color: #ddd;
+}
+
+/*Card Styles*/
+
+.sita-card {
+  box-shadow: 3px 3px 5px 0 #ccc;
+}
+
+/* Checkbox style starts */
+
+.sita-fieldset-inputs label {
+  margin-top: 0;
+}
+
+/*this code hides the browser default checkbox while allowing the user to tab through checkboxes*/
+
+[type=checkbox] {
+  position: absolute;
+  left: -999em;
+}
+
+.lt-ie9 [type=checkbox] {
+  border: 0;
+  float: left;
+  margin: 0.4em 0.4em 0 0;
+  position: static;
+  width: auto;
+}
+
+[type=checkbox]+label {
+  cursor: pointer;
+  font-weight: 400;
+  margin-bottom: 0.65em;
+}
+
+[type=checkbox]+label::before {
+  background: #ffffff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px #757575;
+  content: '\a0';
+  display: inline-block;
+  height: 1rem;
+  line-height: 1rem;
+  margin-right: 0.6em;
+  text-indent: 0.15em;
+  vertical-align: middle\0;
+  width: 1rem;
+}
+
+/*Checkbox color styles*/
+
+[type=checkbox]:checked+label::before {
+  background-color: #005485;
+  box-shadow: 0 0 0 1px #005485;
+}
+
+[type=checkbox]:checked+label::before, [type=checkbox]:checked:disabled+label::before {
+  background-image: url("https://designsystem.digital.gov/assets/img/correct8.png");
+  background-image: url("https://designsystem.digital.gov/assets/img/correct8.svg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+[type=checkbox]:disabled+label {
+  color: #cccccc;
+}
+
+/*this code highlights the label when focused*/
+
+[type=checkbox]:focus+label::before {
+  border: 1px solid #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px #99DAFF;
+}
+
+[type=checkbox]:disabled+label::before {
+  background: #f1f1f1;
+  box-shadow: 0 0 0 1px #aeb0b5;
+  cursor: not-allowed;
+}
+
+.sita-sr-only {
+  position: absolute;
+  left: -999em;
+}
+
+.sita-unstyled-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+  padding-left: 0;
+  display: block;
+}
+
+.sita-unstyled-list>li {
+  margin-bottom: 0;
+}
+
+/*--------End Checkbox Styles--------*/
+
+/*Radio Button Styles*/
+
+/* The container */
+
+.radio-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+
+.radio-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+}
+
+.radio-container input:focus~.radio-checkmark {
+  box-shadow: 0 0 0 3px #99DAFF;
+  border: 1px solid #99DAFF;
+}
+
+/* When the radio button is checked, add a blue background */
+
+.radio-container input:checked~.radio-checkmark {
+  background-color: #005485;
+  border-color: #ffffff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.radio-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+
+.radio-container input:checked~.radio-checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+
+.radio-container .radio-checkmark:after {
+  top: 4px;
+  left: 3.7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/*End Radio Button Styles*/
+
+/*Button Styles*/
+
+.btn-primary {
+  background-color: #005485;
+  color: #FFFFFF;
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #005485;
+  border-color: #fff;
+  color: #fff;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px #99DAFF;
+  background-color: #005485;
+  color: #FFF;
+}
+
+.btn-secondary {
+  background-color: #FFFFFF;
+  border-color: #005485;
+  color: #005485;
+}
+
+.btn-secondary:hover, .btn-secondary:active {
+  background-color: #FFF;
+  color: #005485;
+}
+
+.btn-secondary:focus, .btn-secondary.focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px #99DAFF;
+  background-color: #FFF;
+  color: #005485;
+}
+
+.btn.disabled, .btn:disabled {
+  border: 1px solid #CCC;
+  background-color: #e7e6dc;
+}
+
+/*additional action styles*/
+
+a.AdditionalAction:before {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #005485;
+  padding: 0px 0px;
+  border-radius: 25px;
+  font-size: 24pt;
+  font-weight: 300;
+  line-height: 120%;
+  text-align: center;
+  content: '+';
+  color: #fff;
+}
+
+a.AdditionalAction:hover:before {
+  background-color: #00A2FF;
+  color: #fff;
+  content: '+';
+  text-decoration: none;
+}
+
+a.AdditionalAction {
+  display: flex;
+  align-content: center;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+a.AdditionalAction span {
+  margin-left: .5rem;
+}
+
+a.AdditionalAction:hover span {
+  text-decoration: underline;
+}
+
+/*Split dropdown styles*/
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #99daff;
+}
+
+/*FAB Styles*/
+
+.mdc-fab__icon {
+  font-size: 40px;
+  font-weight: bold;
+  color: #00A2FF;
+  text-align: center;
+  line-height: 100%;
+}
+
+.mdc-fab {
+  width: 60px;
+  height: 60px;
+  background-color: #FFFFFF;
+  border-color: #00A2FF;
+  border-style: solid;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #666;
+  transition: all 0.1s ease-in-out;
+  position: fixed;
+  z-index: 1000;
+  right: 50px;
+  bottom: 50px;
+}
+
+.mdc-fab:hover, .mdc-fab:active {
+  background-color: #00A2FF;
+  box-shadow: 0 6px 14px 0 #666;
+  border: none;
+  transform: scale(1.05);
+}
+
+.mdc-fab__icon:hover {
+  color: #000000;
+}
+
+/*Start pagination styles*/
+
+li.page-item.active .page-link {
+  background-color: #005485;
+  color: #fff;
+}
+
+.page-link {
+  color: #27251F;
+}
+
+.page-link .next-arrow:before {
+  font-family: FontAwesome;
+  font-size: 14px;
+  content: "\f054";
+  color: #005485;
+}
+
+.page-link .prev-arrow:before {
+  font-family: FontAwesome;
+  font-size: 14px;
+  content: "\f053";
+  color: #005485;
+}
+
+/*End pagination styles*/
+
+/*Start Breadcrumb Styles*/
+
+.breadcrumb {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+  display: inline-block;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  color: #27251F;
+  font-family: FontAwesome;
+  content: ">";
+}
+
+li.breadcrumb-item a {
+  color: #005485;
+}
+
+.breadcrumb-item.active {
+  text-decoration: none;
+  color: #27251F;
+}
+
+/*End Breadcrumb Styles*/
+
+/* Start Tab navigation styles*/
+
+#sample-tabs .nav-item {
+  display: inline-block;
+  text-decoration: none;
+  margin: auto 1px;
+  font-weight: 500;
+}
+
+#sample-tabs .nav-item .nav-link {
+  border: none;
+  color: #333;
+}
+
+#sample-tabs .nav-item svg {
+  margin-right: .5rem;
+  color: #333;
+}
+
+#sample-tabs .nav-item .active {
+  margin-bottom: -3px;
+  border-bottom: 3px solid #005485;
+  background-color: #FFF;
+}
+
+#sample-tabs .nav-item::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #005485;
+  transition: ease .2s;
+  margin: 0 auto;
+}
+
+#sample-tabs .nav-item:hover::after {
+  margin: 0 auto;
+  width: 100%;
+}
+
+#gray-tabs .nav-link {
+  border: 1px #dedede solid;
+  background-color: #e3e3e3;
+  margin: auto 1px;
+}
+
+#gray-tabs .nav-item a {
+  color: #000;
+}
+
+#gray-tabs .nav-item .active, #gray-tabs .nav-item:hover {
+  margin-bottom: -4px;
+  border-bottom: 3px solid #005485;
+  background-color: #FFF;
+}
+
+#gray-tabs .nav-item .active:hover {
+  border-bottom: none;
+}
+
+/* End Tab navigation styles*/
+
+/* All levels of nav*/
+
+.bd-sidebar .nav>li>a {
+  display: block;
+  padding: .25rem 1.5rem;
+  font-size: 90%;
+  color: rgba(0, 0, 0, .65);
+}
+
+.bd-sidebar .nav>li>a:hover {
+  color: rgba(0, 0, 0, .85);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.bd-sidebar .nav>.active>a, .bd-sidebar .nav>.active:hover>a {
+  font-weight: 500;
+  color: rgba(0, 0, 0, .85);
+  background-color: transparent;
+}
+
+/*Scrollspy styles*/
+
+.sita-scrollspy {
+  height: 250px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.sita-search {
+  border: 1px solid #0d0d0d;
+}
+
+.carousel {
+  max-height: 400px;
+}

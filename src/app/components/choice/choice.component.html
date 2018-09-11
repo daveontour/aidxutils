@@ -1,0 +1,17 @@
+<div [ngClass]="{'d-none':!this.showElement}">
+  <div [ngClass]="{'card':true,'px-2':true, 'pb-2':true, 'd-none':!config.enabled && !config.required, 'choice':true}">
+    <div class='card-header' style="padding-top:5px;padding-bottom:5px">
+      <form>
+        <label class="form-check-label h6" style="color:#930F80; margin-bottom: 4px; margin-top: 5px">Select Option:</label>
+        <div *ngFor=" let choice of config.choiceElementIdentifiers; let idx = index">
+          <div class="form-check form-check-inline pl-4">
+            <input class="form-check-input" type="radio" (change)="this.checkChoice();this.change()" [(ngModel)]="this.selectedChoice"
+              [attr.id]="this.getID()+'choice'+idx" value="{{choice}}" name="radioGroup" style="display: initial !important">
+            <label class="form-check-label h6" style="color:#930F80; margin-top: 0px" [attr.for]="this.getID()+'choice'+idx">{{choice}}</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <template #sub></template>
+  </div>
+</div>
