@@ -39,6 +39,10 @@ export class SimpleComponent extends ElementComponent {
     }
   }
 
+  remove(){
+    alert("Remove Elememt")
+  }
+
   addSibling(){
     if (this.siblings.length == this.config.maxOccurs){
       alert ("Maximum Number of Occurances Already Reached");

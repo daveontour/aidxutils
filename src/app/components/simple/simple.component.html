@@ -23,6 +23,8 @@
         [ngClass]="{'right-arrow':isCollapsed && hasAttributes() && !hasRequiredAttributes(), 'down-arrow':!isCollapsed && hasAttributes() && !hasRequiredAttributes(), 'right-arrow-required':isCollapsed  && hasRequiredAttributes(), 'down-arrow-required':!isCollapsed && hasRequiredAttributes()}" >
         </span>
 
+        <div *ngIf="!config.required  && config.maxOccurs > 1" (click) = "this.remove()" style="float: right">Remove</div>
+
       </div>
     </div>
 

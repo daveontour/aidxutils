@@ -26,7 +26,6 @@ import { XSStringComponent } from './controls/xsstring/xsstring.component';
 import { XSDateComponent } from './controls/xsdate/xsdate.component';
 import { jqxSplitterComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxsplitter';
 
-
 @NgModule({
   declarations: [
     AppComponent,
