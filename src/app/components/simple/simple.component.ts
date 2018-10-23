@@ -40,7 +40,8 @@ export class SimpleComponent extends ElementComponent {
   }
 
   remove(){
-    alert("Remove Elememt")
+    alert("Remove Elememt");
+    
   }
 
   addSibling(){
@@ -141,11 +142,15 @@ export class SimpleComponent extends ElementComponent {
 
     // Create the editable component
     // getFactory() is in tbe DisplaywidgetComponent
-    this.mfactory = this.getFactory(this.config.model, this.resolver);
+    console.log(this.config);
+
+    if (this.config.modelType != null){
+    this.mfactory = this.getFactory(this.config.modelType.model, this.resolver);
     this.controlRef = this.control.createComponent(this.mfactory);
 
     // Set the config of the control
     this.controlRef.instance.setElementParent(this);
+    }
 
     if (this.config.attributes != null) {
       this.sortAttributes("DESC");

@@ -1,4 +1,4 @@
-<div [ngClass]="{'d-none':!this.showElement || this.bobNumber == 0}" style="margin-top:4px">
+<div [ngClass]="{'d-none':(!this.showElement || this.bobNumber == 0), 'd-block':'this.showElement && this.inChoice'}" style="margin-top:4px">
   <div [ngClass]="{'card':true,'px-2':true, 'pb-2':true, 'oddDepth':isOddDepth(),'evenDepth':isEvenDepth(), 'd-none':!config.enabled && !config.required}">
     <div class='card-header'>
       <label class="form-check-label h6" style="color:#930F80; display:initial !important" (click)="isCollapsed = !isCollapsed" placement="right"

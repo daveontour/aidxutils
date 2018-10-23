@@ -1,41 +1,30 @@
+import { SequenceComponent } from './../sequence/sequence.component';
 import { AttributeComponent } from '../attribute/attribute.component';
 import { ChoiceComponent } from '../choice/choice.component';
 import { ItemConfig } from '../../interfaces/interfaces';
 import { SimpleComponent } from '../simple/simple.component';
 import { ElementComponent } from '../element/element.component';
 import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
-import { Globals } from './../../globals';
+import { Globals } from '../../globals';
 
 @Component({
-  selector: 'app-sequence',
-  templateUrl: './sequence.component.html',
-  styleUrls: ['./sequence.component.css']
+  selector: 'app-choicesequence',
+  templateUrl: './choicesequence.component.html',
+  styleUrls: ['./choicesequence.component.css']
 })
-export class SequenceComponent extends ElementComponent {
+export class ChoiceSequenceComponent extends ElementComponent {
   @ViewChild("control", { read: ViewContainerRef }) control;
   @ViewChild("siblings", { read: ViewContainerRef }) siblingsPt;
   controlRef: any;
   isCollapsed = true;
   public bobNumberChild = 1;
   public depth = 1;
-
+  public inChoice = false;
 
   constructor(resolver: ComponentFactoryResolver, public global: Globals) {
     super(resolver);
   }
 
-  hideElement(){
-
-    if (!this.showElement){
-      return true;
-    }
-    if (this.bobNumber == 0){
-      return true;
-    }
-
-    return false;
-    
-  }
 
   isOddDepth(){
     if (this.depth%2 == 1){
@@ -51,24 +40,7 @@ export class SequenceComponent extends ElementComponent {
       return true;
     }
   }
-  addSibling() {
-    if (this.siblings.length == this.config.maxOccurs) {
-      alert("Maximum Number of Occurances Already Reached");
-      return;
-    }
-    if (this.bobNumber != 0) {
-      return;
-    }
 
-    let ref = this.siblingsPt.createComponent(this.resolver.resolveComponentFactory(SequenceComponent));
-    ref.instance.setBobNumber(this.bobNumberChild);
-    this.bobNumberChild++;
-    ref.instance.depth = this.depth;
-    ref.instance.setConfig(this.config);
-    ref.instance.config.enabled = true;
-    this.siblings.push(ref.instance);
-    this.global.getString();
-  }
   getElementString(indent?:string) {
 
      
@@ -153,7 +125,8 @@ export class SequenceComponent extends ElementComponent {
     return true;
   }
 
-  setConfig(conf: ItemConfig) {
+  setConfig(conf: ItemConfig, inChoice:boolean) {
+    this.inChoice = inChoice;
     let x = this;
     this.config = JSON.parse(JSON.stringify(conf));
     this.id = this.parentID + "/" + this.config.name;

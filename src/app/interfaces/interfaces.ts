@@ -17,6 +17,7 @@ export interface ItemConfig{
     choiceElementIdentifiers : string[],
     elementPath : string,
     model: string,
+    modelType: any;
     restrictionAnnotation: string,
     modelDescription: string,
     restrictionPattern: string,

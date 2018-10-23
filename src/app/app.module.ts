@@ -16,6 +16,7 @@ import { FormsModule, FormBuilder, FormGroup }   from '@angular/forms';
 import { Globals } from './globals';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { SequenceComponent } from './components/sequence/sequence.component';
+import { ChoiceSequenceComponent } from './components/choicesequence/choicesequence.component';
 import { SimpleComponent } from './components/simple/simple.component';
 import { ChoiceComponent } from './components/choice/choice.component';
 import { PatternComponent } from './controls/pattern/pattern.component';
@@ -30,6 +31,7 @@ import { jqxSplitterComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
   declarations: [
     AppComponent,
     SequenceComponent,
+    ChoiceSequenceComponent,
     SimpleComponent,
     ChoiceComponent,
     PatternComponent,
@@ -61,6 +63,7 @@ import { jqxSplitterComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
   bootstrap: [AppComponent],
   entryComponents: [
     SequenceComponent, 
+    ChoiceSequenceComponent,
     SimpleComponent, 
     ChoiceComponent, 
     PatternComponent,

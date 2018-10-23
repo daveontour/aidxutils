@@ -36,7 +36,7 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
   abstract createElement(el: ItemConfig, type: string): void;
   abstract getElementString(indent?:string): string;
   abstract getSiblingString(indent?:string): string;
-  abstract setConfig(conf: ItemConfig): void;
+  abstract setConfig(conf: ItemConfig, inChoice:boolean): void;
 
   setBobNumber(bobNum: number) {
     this.bobNumber = bobNum;
