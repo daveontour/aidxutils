@@ -5,6 +5,7 @@ import { SimpleComponent } from '../simple/simple.component';
 import { ElementComponent } from '../element/element.component';
 import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { Globals } from './../../globals';
+import { compileFactoryFunction } from '@angular/compiler/src/render3/r3_factory';
 
 @Component({
   selector: 'app-sequence',
@@ -24,28 +25,28 @@ export class SequenceComponent extends ElementComponent {
     super(resolver);
   }
 
-  hideElement(){
+  hideElement() {
 
-    if (!this.showElement){
+    if (!this.showElement) {
       return true;
     }
-    if (this.bobNumber == 0){
+    if (this.bobNumber == 0) {
       return true;
     }
 
     return false;
-    
+
   }
 
-  isOddDepth(){
-    if (this.depth%2 == 1){
+  isOddDepth() {
+    if (this.depth % 2 == 1) {
       return true;
     } else {
       return false;
     }
   }
-  isEvenDepth(){
-    if (this.depth%2 == 1){
+  isEvenDepth() {
+    if (this.depth % 2 == 1) {
       return false;
     } else {
       return true;
@@ -69,23 +70,23 @@ export class SequenceComponent extends ElementComponent {
     this.siblings.push(ref.instance);
     this.global.getString();
   }
-  getElementString(indent?:string) {
+  getElementString(indent?: string) {
 
-     
+
     //If it's not required AND and not enabled, just return nothing
-    if (!this.config.enabled && !this.config.required){
+    if (!this.config.enabled && !this.config.required) {
       return "";
     }
 
     //If there is only a single instance, return the data, which we can get from the sibling string function
     if (this.bobNumber == 1 && this.siblings.length == 0) {
-      let x =  this.getSiblingString(indent);
+      let x = this.getSiblingString(indent);
       return x;
     }
-    
-    if (this.bobNumber == 0 && this.siblings.length > 0){
-      let e :string = "";
-      this.siblings.forEach(function(s){
+
+    if (this.bobNumber == 0 && this.siblings.length > 0) {
+      let e: string = "";
+      this.siblings.forEach(function (s) {
         let x = s.getSiblingString(indent);
         e = e.concat(x);
       });
@@ -95,10 +96,10 @@ export class SequenceComponent extends ElementComponent {
     return "";
   }
 
-  getSiblingString(indent:string) {
+  getSiblingString(indent: string) {
 
-    let c: string = this.getChildString(indent+this.in);
-    let e: string = indent+'<' + this.config.name;
+    let c: string = this.getChildString(indent + this.in);
+    let e: string = indent + '<' + this.config.name;
     e = e.concat(this.getAttributeString());
 
     if (c == null && this.config.value == null) {
@@ -117,30 +118,36 @@ export class SequenceComponent extends ElementComponent {
       e = e.concat(c);
     }
 
-    e = e.concat(indent+'</' + this.config.name + '>\n');
+    e = e.concat(indent + '</' + this.config.name + '>\n');
     return e;
   }
   createElement(el: ItemConfig, type: string) {
-    let factory = this.resolver.resolveComponentFactory(SimpleComponent);
-    if (type == "sequence") {
-      let factory = this.resolver.resolveComponentFactory(SequenceComponent);
-      if (el.choice) {
-        let factory = this.resolver.resolveComponentFactory(ChoiceComponent);
-        this.componentRef = this.container.createComponent(factory);
+    console.log("Creating " + el.name + "  type = " + type);
 
-        //Keep the Choice object unique
-        this.componentRef.instance.setBobNumber(this.bobNumber);
-      } else {
+    let factory: any;
+
+    switch (type) {
+      case "simple":
+        factory = this.resolver.resolveComponentFactory(SimpleComponent);
         this.componentRef = this.container.createComponent(factory);
-        this.componentRef.instance.depth = this.depth+1;
-      }
-    } else {
-      this.componentRef = this.container.createComponent(factory);
+        break;
+      case "sequence":
+        factory = this.resolver.resolveComponentFactory(SequenceComponent);
+        this.componentRef = this.container.createComponent(factory);
+        this.componentRef.instance.depth = this.depth + 1;
+        break;
+      case "choice":
+        factory = this.resolver.resolveComponentFactory(ChoiceComponent);
+        this.componentRef = this.container.createComponent(factory);
+        //Keep the Choice object unique 
+        this.componentRef.instance.setBobNumber(this.bobNumber);
+        break;
     }
+
     this.children.push(this.componentRef.instance);
     this.componentRef.instance.setParentID(this.id + "/" + el.name);
     this.componentRef.instance.setConfig(el);
-    if (type == "sequence"){
+    if (type == "sequence") {
       this.componentRef.instance.config.enabled = true;
     }
   }
@@ -161,29 +168,37 @@ export class SequenceComponent extends ElementComponent {
     if (this.config.minOccurs == 1 && this.config.maxOccurs == 1) {
       this.bobNumber = 1;
     }
-    if (conf.childelements.length > 0) {
-      this.hasChildren = true;
-      this.config.childelements.forEach(function (v) {
-        v.elementPath = x.config.elementPath + "/" + v.name;
-        if (v.childelements == null || v.childelements.length == 0) {
-          x.createElement(v, "simple");
+
+    this.hasChildren = conf.hasChildren;
+    if (conf.hasChildren) {
+      this.config.allOf.forEach(function (v) {
+        if (v.type != "choice"){
+          v.elementPath = x.config.elementPath + "/" + v.name;
         } else {
-          x.createElement(v, "sequence");
+          v.elementPath = x.config.elementPath;
         }
+        x.createElement(v, v.type);
       });
     }
 
-    x.sortAttributes("DESC");
-    x.config.attributes.forEach(function (att) {
-      if (att.required) {
-        x.attributesRequired = true;
-        x.isCollapsed = false;
-      }
-      let factory = x.resolver.resolveComponentFactory(AttributeComponent);
-      x.componentRef = x.attributes.createComponent(factory);
-      x.componentRef.instance.setID(x.id + "@" + att.name);
-      x.componentRef.instance.setAttribute(att);
-      x.addAttChild(x.componentRef.instance);
-    });
+    if (conf.hasAttributes) {
+      this.sortAttributes("DESC");
+      this.config.attributes.forEach(function (att) {
+        if (att.required) {
+          x.attributesRequired = true;
+          x.isCollapsed = false;
+        }
+        let factory = x.resolver.resolveComponentFactory(AttributeComponent);
+        x.componentRef = x.attributes.createComponent(factory);
+        x.componentRef.instance.setID(x.id + "@" + att.name);
+        x.componentRef.instance.setAttribute(att);
+        x.addAttChild(x.componentRef.instance);
+      });
+    }
+
+    //Add the minimum nuber of occurances
+    for (var i = 0; i < x.config.minOccurs; i++){
+      this.addSibling();
+    }
   }
 }

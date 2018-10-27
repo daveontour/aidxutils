@@ -1,4 +1,5 @@
-<div [ngClass]="{'d-none':(!this.showElement || this.bobNumber == 0), 'd-block':'this.showElement && this.inChoice'}" style="margin-top:4px">
+
+<div [ngClass]="{'d-none':(!this.showElement || this.bobNumber == 0)}" style="margin-top:4px">
   <div [ngClass]="{'card':true,'px-2':true, 'pb-2':true, 'oddDepth':isOddDepth(),'evenDepth':isEvenDepth(), 'd-none':!config.enabled && !config.required}">
     <div class='card-header'>
       <label class="form-check-label h6" style="color:#930F80; display:initial !important" (click)="isCollapsed = !isCollapsed" placement="right"
@@ -26,8 +27,6 @@
     <span style="color:#930F80; cursor: pointer;">Add {{config.name}} Sequence</span>
   </a>
   <span class="occurs noselect" *ngIf="config.maxOccurs > 100000"> ( Current: {{this.bobNumberChild - 1}} instances )</span>
-  <span class="occurs noselect" *ngIf="config.maxOccurs < 100000"> ( {{this.bobNumberChild - 1}} of
-    {{config.maxOccurs}})</span>
+  <span class="occurs noselect" *ngIf="config.maxOccurs < 100000"> ( {{this.bobNumberChild - 1}} of {{config.maxOccurs}})</span>
 </div>
-
 <template #siblings></template>

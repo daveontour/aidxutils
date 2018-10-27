@@ -33,9 +33,13 @@ export class AttributeComponent extends DisplaywidgetComponent{
     //Attribute config
     this.config = attribute;
 
+    if (this.config.required){
+      this.config.enabled = true;
+    }
+
     // Create the editable control 
     // getFactory() is in tbe DisplaywidgetComponent
-    this.factory = this.getFactory(this.config.modelType.model, this.resolver);
+    this.factory = this.getFactory(this.config.model, this.resolver);
     this.controlRef = this.control.createComponent(this.factory);
 
     // Set the config of the control

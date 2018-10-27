@@ -37,7 +37,7 @@ export abstract class DisplaywidgetComponent {
       case "minmaxlength":
         factory = resolver.resolveComponentFactory(MinMaxLengthComponent);
         break;
-      case "enumlist":
+      case "enum":
         factory = resolver.resolveComponentFactory(EnumListComponent);
         break;
       case "minmaxinclusive":

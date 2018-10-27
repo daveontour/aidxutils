@@ -2,5 +2,5 @@
   [(ngModel)]="config.value"
   [ngClass]="{'form-control-sm':true}"
   [attr.disabled]="(this.isEnabled() || (!this.isEnabled() && this.isRequired()))?null:''" >
-    <option [value]="item" *ngFor="let item of config.restrictionEnumList">{{item}}</option>
+    <option [value]="item" *ngFor="let item of config.enumList">{{item}}</option>
   </select>

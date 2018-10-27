@@ -94,7 +94,7 @@ export class ChoiceSequenceComponent extends ElementComponent {
   }
   createElement(el: ItemConfig, type: string) {
     let factory = this.resolver.resolveComponentFactory(SimpleComponent);
-    if (type == "sequence") {
+    if (type == "sequence" || el.choice) {
       let factory = this.resolver.resolveComponentFactory(SequenceComponent);
       if (el.choice) {
         let factory = this.resolver.resolveComponentFactory(ChoiceComponent);

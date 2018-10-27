@@ -84,11 +84,7 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
   }
 
   hasAttributes() {
-    if (this.config.attributes.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.config.hasAttributes;
   }
 
   hasRequiredAttributes() {

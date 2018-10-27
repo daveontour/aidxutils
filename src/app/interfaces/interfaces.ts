@@ -14,6 +14,8 @@ export interface ItemConfig{
     sequence: boolean,
     attributes : ItemConfig[],
     childelements : ItemConfig[],
+    allOf : ItemConfig[],
+    oneOf : ItemConfig[],
     choiceElementIdentifiers : string[],
     elementPath : string,
     model: string,
@@ -26,5 +28,8 @@ export interface ItemConfig{
     pattern:string,
     minOccurs : number,
     maxOccurs : number,
-    restrictionEnumList: string[]
+    restrictionEnumList: string[],
+    type : string,
+    hasChildren : boolean,
+    hasAttributes : boolean
 }

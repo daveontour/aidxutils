@@ -38,10 +38,10 @@ export class AppComponent implements OnInit{
 
   createElement() {
 
-    this.http.get<ItemConfig>('http://localhost:8080/XSD_Forms/json').subscribe(data => {
+    this.http.get<ItemConfig>('http://localhost:8080/XSD_Forms/json?type=aidx').subscribe(data => {
       console.log(data);
       data.elementPath = data.name;
-      if (data.childelements.length == 0) {
+      if (data.type == "simple") {
         const factory = this.resolver.resolveComponentFactory(SimpleComponent);
         this.componentRef = this.container.createComponent(factory);
         this.componentRef.instance.setParentID("/");

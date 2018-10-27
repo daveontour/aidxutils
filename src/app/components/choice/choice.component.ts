@@ -22,17 +22,13 @@ export class ChoiceComponent extends ElementComponent {
 
   checkChoice() {
 
-    this.container.detach();
+   this.container.detach();
 
     let x = this;
     let choice = this.selectedChoice;
     this.opts.forEach(function (c) {
       if (c.name == choice) {
-        if (c.childelements == null || c.childelements.length == 0) {
-          x.createElement(c, "simple");
-        } else {
-          x.createElement(c, "sequence");
-        }
+        x.createElement(c, c.type);
       }
     })
   }
@@ -66,38 +62,54 @@ export class ChoiceComponent extends ElementComponent {
     return "";
   }
   createElement(el: ItemConfig, type: string) {
-    let factory = this.resolver.resolveComponentFactory(SimpleComponent);
-    if (type == "sequence") {
-      let factory = this.resolver.resolveComponentFactory(ChoiceSequenceComponent);
-      if (el.choice) {
-        let factory = this.resolver.resolveComponentFactory(ChoiceComponent);
+ 
+    let factory: any;
+
+    switch (type) {
+      case "simple":
+        factory = this.resolver.resolveComponentFactory(SimpleComponent);
         this.componentRef = this.container.createComponent(factory);
-      } else {
+        break;
+      case "sequence":
+        factory = this.resolver.resolveComponentFactory(SequenceComponent);
         this.componentRef = this.container.createComponent(factory);
-      }
-    } else {
-      this.componentRef = this.container.createComponent(factory);
+ //       this.componentRef.instance.depth = this.depth + 1;
+        break;
+      case "choice":
+        factory = this.resolver.resolveComponentFactory(ChoiceComponent);
+        this.componentRef = this.container.createComponent(factory);
+        //Keep the Choice object unique 
+        this.componentRef.instance.setBobNumber(this.bobNumber);
+        break;
     }
+
     this.children.push(this.componentRef.instance);
+    this.componentRef.instance.setParentID(this.id + "/" + el.name);
     this.componentRef.instance.setConfig(el);
+    if (type == "sequence") {
+      this.componentRef.instance.config.enabled = true;
+    }
   }
 
   setConfig(conf: ItemConfig) {
-    let x = this;
-    this.config = JSON.parse(JSON.stringify(conf));
-    this.selectedChoice = this.config.choiceElementIdentifiers[0];
 
+    let x = this;
+    let choiceIDs = [];
+
+    this.config = JSON.parse(JSON.stringify(conf));
+    this.hasChildren = conf.hasChildren;
     this.id = this.bobNumber + this.config.elementPath.replace("{", "").replace("}", "");
 
-    if (conf.childelements.length > 0) {
-      this.hasChildren = true;
-      this.config.childelements.forEach(function (v) {
-        v.elementPath = x.config.elementPath + "/" + v.name;
+    if (conf.oneOf.length > 0) {
+      this.config.oneOf.forEach(function (v) {
+        v.elementPath = x.config.elementPath;
+        choiceIDs.push(v.name);
         x.opts.push(v);
       });
     }
 
+    this.selectedChoice = choiceIDs[0];
+    this.config.choiceElementIdentifiers = choiceIDs;
     this.checkChoice();
   }
-
 }
