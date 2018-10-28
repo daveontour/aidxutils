@@ -75,6 +75,7 @@ export class SequenceComponent extends ElementComponent {
       return true;
     }
   }
+  
   addSibling() {
     if (this.siblings.length == this.config.maxOccurs) {
       alert("Maximum Number of Occurances Already Reached");
@@ -93,7 +94,6 @@ export class SequenceComponent extends ElementComponent {
     this.bobNumberChild++;
     ref.instance.depth = this.depth;
     ref.instance.setConfig(conf);
-    debugger;
     ref.instance.setParent(this);
     ref.instance.config.enabled = true;
     this.siblings.push(ref.instance);

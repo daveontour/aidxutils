@@ -106,6 +106,7 @@ export class ChoiceComponent extends ElementComponent {
     this.children.push(this.componentRef.instance);
     this.componentRef.instance.setParentID(this.id + "/" + el.name);
     this.componentRef.instance.setParent(this);
+    this.componentRef.instance.isChoiceChild = true;
     this.componentRef.instance.setConfig(el);
     if (type == "sequence") {
       this.componentRef.instance.config.enabled = true;

@@ -19,7 +19,6 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
   children: ElementComponent[] = [];
   parent : ElementComponent;
   attchildren: any[] = [];
-  // elementID: string = "davewashere"
   hasChildren: boolean = false;
   showElement: boolean = true;
   parentID: string;
@@ -28,6 +27,8 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
   bobNumber: number = 0;
   attributesRequired: boolean = false;
   in:string = "  ";
+  isRoot : boolean  = false;
+  isChoiceChild = false;
 
   constructor(public resolver: ComponentFactoryResolver) {
     super();

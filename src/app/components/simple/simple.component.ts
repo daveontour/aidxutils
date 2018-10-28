@@ -55,6 +55,7 @@ export class SimpleComponent extends ElementComponent {
     ref.instance.setBobNumber(this.bobNumberChild++);
     ref.instance.setConfig(this.config);
     ref.instance.setParent(this);
+    ref.instance.config.enabled = true;
     this.siblings.push(ref.instance);
   }
 
