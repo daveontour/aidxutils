@@ -31,5 +31,6 @@ export interface ItemConfig{
     restrictionEnumList: string[],
     type : string,
     hasChildren : boolean,
-    hasAttributes : boolean
+    hasAttributes : boolean,
+    uuid : string
 }

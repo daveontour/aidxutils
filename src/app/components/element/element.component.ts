@@ -17,8 +17,9 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
   componentRef: any;
   config: ItemConfig;
   children: ElementComponent[] = [];
+  parent : ElementComponent;
   attchildren: any[] = [];
-  elementID: string = "davewashere"
+  // elementID: string = "davewashere"
   hasChildren: boolean = false;
   showElement: boolean = true;
   parentID: string;
@@ -30,13 +31,20 @@ export abstract class ElementComponent extends DisplaywidgetComponent {
 
   constructor(public resolver: ComponentFactoryResolver) {
     super();
-    this.elementID = this.elementID.concat(this.id);
+    // this.elementID = this.elementID.concat(this.id);
   }
 
   abstract createElement(el: ItemConfig, type: string): void;
   abstract getElementString(indent?:string): string;
   abstract getSiblingString(indent?:string): string;
   abstract setConfig(conf: ItemConfig, inChoice:boolean): void;
+  abstract remove(): void;
+  abstract removeChild(childIDtoRemove : string): void;
+
+
+  setParent(parent : ElementComponent){
+    this.parent = parent;
+  }
 
   setBobNumber(bobNum: number) {
     this.bobNumber = bobNum;

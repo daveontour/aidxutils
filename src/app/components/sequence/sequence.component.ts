@@ -19,12 +19,35 @@ export class SequenceComponent extends ElementComponent {
   isCollapsed = true;
   public bobNumberChild = 1;
   public depth = 1;
+  public childID = 1000;
 
 
   constructor(resolver: ComponentFactoryResolver, public global: Globals) {
     super(resolver);
   }
 
+
+  remove() {
+    this.parent.removeChild(this.config.uuid);
+  }
+
+  removeChild(childIDToRemove: string) {
+
+   if (this.siblings.length <= this.config.minOccurs ){
+      alert("Cannot Remove. At least "+this.config.minOccurs+" instance required");
+      return;
+   }
+
+    for (var i = 0; i < this.siblings.length; i++) {
+      var id = this.siblings[i].config.uuid
+      if (id == childIDToRemove) {
+        this.siblingsPt.remove(i);
+        this.siblings.splice(i,1);
+        this.bobNumberChild--;
+        break;
+      }
+    }
+  }
   hideElement() {
 
     if (!this.showElement) {
@@ -61,11 +84,17 @@ export class SequenceComponent extends ElementComponent {
       return;
     }
 
+    let conf = JSON.parse(JSON.stringify(this.config));
+    conf.uuid = this.config.uuid+this.childID;
+    this.childID++;
+
     let ref = this.siblingsPt.createComponent(this.resolver.resolveComponentFactory(SequenceComponent));
     ref.instance.setBobNumber(this.bobNumberChild);
     this.bobNumberChild++;
     ref.instance.depth = this.depth;
-    ref.instance.setConfig(this.config);
+    ref.instance.setConfig(conf);
+    debugger;
+    ref.instance.setParent(this);
     ref.instance.config.enabled = true;
     this.siblings.push(ref.instance);
     this.global.getString();
@@ -124,6 +153,7 @@ export class SequenceComponent extends ElementComponent {
   createElement(el: ItemConfig, type: string) {
     console.log("Creating " + el.name + "  type = " + type);
 
+ 
     let factory: any;
 
     switch (type) {
@@ -146,6 +176,7 @@ export class SequenceComponent extends ElementComponent {
 
     this.children.push(this.componentRef.instance);
     this.componentRef.instance.setParentID(this.id + "/" + el.name);
+    this.componentRef.instance.setParent(this);
     this.componentRef.instance.setConfig(el);
     if (type == "sequence") {
       this.componentRef.instance.config.enabled = true;
@@ -163,6 +194,7 @@ export class SequenceComponent extends ElementComponent {
   setConfig(conf: ItemConfig) {
     let x = this;
     this.config = JSON.parse(JSON.stringify(conf));
+    this.config.uuid = this.global.guid();
     this.id = this.parentID + "/" + this.config.name;
 
     if (this.config.minOccurs == 1 && this.config.maxOccurs == 1) {

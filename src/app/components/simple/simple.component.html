@@ -9,11 +9,9 @@
         <!-- <span *ngIf="this.controlRef.instance.requireStar()">
           <em style="color:red">* </em>
         </span> -->
-        <span *ngIf="config.required">*</span>
+        <!-- <span *ngIf="config.required">*</span> -->
         <label [ngClass]="{'form-check-label':true, 'simple-label':true}" (click)="isCollapsed = !isCollapsed" style="color:#930F80;margin-bottom:initial; display: initial !important;font-weight: 400" [attr.for]="this.getID()"
           placement="right" ngbPopover="{{config.annotation}}" triggers="mouseenter:mouseleave" popoverTitle="{{config.name}}">{{config.name}}
-          <span *ngIf="config.maxOccurs > 1"> ({{this.bobNumber}})</span>
-         
         </label>
 
         <!-- The little arrow at the end of the name -->
@@ -23,7 +21,9 @@
         [ngClass]="{'right-arrow':isCollapsed && hasAttributes() && !hasRequiredAttributes(), 'down-arrow':!isCollapsed && hasAttributes() && !hasRequiredAttributes(), 'right-arrow-required':isCollapsed  && hasRequiredAttributes(), 'down-arrow-required':!isCollapsed && hasRequiredAttributes()}" >
         </span>
 
-        <div *ngIf="!config.required  && config.maxOccurs > 1" (click) = "this.remove()" style="float: right">Remove</div>
+        <div *ngIf="!config.required  && config.maxOccurs > 1" (click) = "this.remove()" style="float: right">
+        <span class="DeleteAction"> </span>
+        </div>
 
       </div>
     </div>

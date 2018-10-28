@@ -1,4 +1,3 @@
-import { ChoiceSequenceComponent} from './../choicesequence/choicesequence.component';
 import { Globals } from './../../globals';
 import { SequenceComponent } from '../sequence/sequence.component';
 import { SimpleComponent } from '../simple/simple.component';
@@ -15,9 +14,27 @@ export class ChoiceComponent extends ElementComponent {
   controlRef: any
   selectedChoice: string;
   opts: any[] = [];
+  public childID :number = 1000;
 
   constructor(resolver: ComponentFactoryResolver, public global: Globals) {
     super(resolver);
+  }
+
+  remove() {
+    this.parent.removeChild(this.config.uuid);
+  }
+
+  removeChild(childIDToRemove: string) {
+
+    for (var i = 0; i < this.siblings.length; i++) {
+      var id = this.siblings[i].config.uuid
+      if (id == childIDToRemove) {
+        this.container.remove(i);
+        this.siblings.splice(i,1);
+      
+        break;
+      }
+    }
   }
 
   checkChoice() {
@@ -65,6 +82,9 @@ export class ChoiceComponent extends ElementComponent {
  
     let factory: any;
 
+    el.uuid = el.uuid+this.childID;
+    this.childID++;
+
     switch (type) {
       case "simple":
         factory = this.resolver.resolveComponentFactory(SimpleComponent);
@@ -85,6 +105,7 @@ export class ChoiceComponent extends ElementComponent {
 
     this.children.push(this.componentRef.instance);
     this.componentRef.instance.setParentID(this.id + "/" + el.name);
+    this.componentRef.instance.setParent(this);
     this.componentRef.instance.setConfig(el);
     if (type == "sequence") {
       this.componentRef.instance.config.enabled = true;
@@ -97,6 +118,7 @@ export class ChoiceComponent extends ElementComponent {
     let choiceIDs = [];
 
     this.config = JSON.parse(JSON.stringify(conf));
+    this.config.uuid = this.global.guid();
     this.hasChildren = conf.hasChildren;
     this.id = this.bobNumber + this.config.elementPath.replace("{", "").replace("}", "");
 

@@ -15,5 +15,14 @@ export class Globals {
       console.log("globals.ts, line 13 error");
     }
   }
+
+ public guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return s4() + s4() + s4() + s4() + s4() + s4() + s4() + s4();
+  }
   
 }
